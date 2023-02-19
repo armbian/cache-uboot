@@ -1,0 +1,50 @@
+name: Uboot
+
+  workflow_dispatch:
+  workflow_call:
+  schedule:
+    - cron: '0 4 * * *' # Scheduled runs every day at 4am UTC
+
+jobs:
+
+  Cancel:
+    name: "Cancel currently active"
+    if: ${{ github.repository_owner == 'Armbian' }}
+    runs-on: qemu
+    timeout-minutes: 3
+    steps:
+      - uses: styfle/cancel-workflow-action@0.11.0
+        if: ${{ github.event.schedule == '' }}
+        with:
+          all_but_latest: true
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  Legacy:
+
+    if: ${{ success() && github.repository_owner == 'Armbian' }}
+    uses: ./.github/workflows/include.yml
+
+    with:
+
+      runner: "qemu"
+      include: 'grep legacy | '
+
+  Current:
+
+    if: ${{ success() && github.repository_owner == 'Armbian' }}
+    uses: ./.github/workflows/include.yml
+
+    with:
+
+      runner: "qemu"
+      include: 'grep current | '
+
+  Edge:
+
+    if: ${{ success() && github.repository_owner == 'Armbian' }}
+    uses: ./.github/workflows/include.yml
+
+    with:
+
+      runner: "ubuntu-latest"
+      include: 'grep edge | '
