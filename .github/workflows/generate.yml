@@ -23,6 +23,7 @@ jobs:
 
   Legacy:
 
+    needs: Cancel
     if: ${{ success() && github.repository_owner == 'Armbian' }}
     uses: ./.github/workflows/include.yml
 
@@ -33,6 +34,7 @@ jobs:
 
   Current:
 
+    needs: Cancel
     if: ${{ success() && github.repository_owner == 'Armbian' }}
     uses: ./.github/workflows/include.yml
 
@@ -42,7 +44,8 @@ jobs:
       include: 'grep current | '
 
   Edge:
-
+  
+    needs: Cancel
     if: ${{ success() && github.repository_owner == 'Armbian' }}
     uses: ./.github/workflows/include.yml
 
