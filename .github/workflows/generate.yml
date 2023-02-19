@@ -29,7 +29,7 @@ jobs:
 
     with:
 
-      runner: "qemu"
+      runner: "X64"
       include: 'grep legacy | '
 
   Current:
@@ -40,7 +40,7 @@ jobs:
 
     with:
 
-      runner: "qemu"
+      runner: "X64"
       include: 'grep current | '
 
   Edge:
