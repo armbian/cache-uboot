@@ -25,7 +25,7 @@ jobs:
 
     needs: Cancel
     if: ${{ success() && github.repository_owner == 'Armbian' }}
-    uses: ./.github/workflows/include.yml
+    uses: ./.github/workflows/include.yml@development
 
     with:
 
