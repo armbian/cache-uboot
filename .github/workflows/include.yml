@@ -46,7 +46,7 @@ jobs:
       fail-fast: false # let other jobs try to complete if one fails
       matrix:
         include: ${{ fromJSON(needs.prepare.outputs.matrix) }}
-    runs-on: ${{ fromJSON(needs.prepare.outputs.matrix.runner) }}
+    runs-on: ${{ include.runner) }}
     name: "${{ matrix.board }}"
    
     env:
