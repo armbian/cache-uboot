@@ -47,9 +47,9 @@ jobs:
       matrix:
         include: ${{ fromJSON(needs.prepare.outputs.matrix) }}
         
-    runs-on: "${{fromJson(needs.prepare.outputs.matrix).runner}}"
+    runs-on: ubuntu-latest
     
-    name: "${{ matrix.board }}"
+    name: "${{ matrix.runner }}"
    
     env:
       BOARD: "${{ matrix.board }}"
