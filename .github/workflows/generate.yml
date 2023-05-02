@@ -4,8 +4,8 @@ on:
 
   workflow_dispatch:
   workflow_call:
-  schedule:
-    - cron: '0 4 * * *' # Scheduled runs every day at 4am UTC
+#  schedule:
+#    - cron: '0 4 * * *' # Scheduled runs every day at 4am UTC
 
 jobs:
 
